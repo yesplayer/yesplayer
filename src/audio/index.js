@@ -5,15 +5,21 @@ const newAudioBuffer = require("./newAudioBuffer");
 const source = audioCtx.createBufferSource();
 
 newAudioBuffer("file:///home/nemanjan00/Music/Elvis Presley/Jailhouse Rock/01 Jailhouse Rock.mp3").then((buffer) => {
+	window.buffer = buffer;
+
 	source.buffer = buffer;
 
-	const gainNode = audioCtx.createGain();
+	const scriptNode = audioCtx.createScriptProcessor(4096, 0, 2);
 
-	source.connect(gainNode);
-	source.start(0);
+	let i = 0;
 
-	gainNode.gain.value = 3;
+	scriptNode.onaudioprocess = function(audioProcessingEvent) {
+		var outputBuffer = audioProcessingEvent.outputBuffer;
 
-	gainNode.connect(audioCtx.destination);
+		buffer.copyFromChannel(outputBuffer.getChannelData(0), 1, i * 4096);
+		buffer.copyFromChannel(outputBuffer.getChannelData(1), 1, i++ * 4096);
+	}
+
+	scriptNode.connect(audioCtx.destination);
 });
 
