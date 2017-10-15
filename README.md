@@ -4,7 +4,7 @@ YesPlayer is player you are going to say yes to.
 
 I wanted to create player that actually does what I want so I am creating new one. 
 
-## What can I do with this player? 
+## LICENSE [What can I do with this player?] 
 
  * Eat it
 
