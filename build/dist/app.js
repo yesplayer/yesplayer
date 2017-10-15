@@ -1,3 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+var p5 = require('p5');
+function windowResized() {
+    resizeCanvas(window.innerWidth, window.innerHeight, true);
+}
+function setup() {
+    windowResized();
+}
+function draw() {
+    background('#000');
+}
 //# sourceMappingURL=app.js.map
