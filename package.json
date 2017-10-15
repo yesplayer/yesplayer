@@ -1,0 +1,10 @@
+{
+  "name": "yesplayer",
+  "version": "1.0.0",
+  "description": "YesPlayer is player you are going to say yes to. ",
+  "main": "index.js",
+  "repository": "git@github.com:yesplayer/yesplayer.git",
+  "author": "nemanjan00 <nemanjan00@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
