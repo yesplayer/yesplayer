@@ -7,7 +7,9 @@
   "author": "nemanjan00 <nemanjan00@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "p5": "^0.5.16"
+  },
   "devDependencies": {
     "electron": "^1.7.9"
   }
