@@ -1,12 +1,10 @@
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-const newAudio = require("./newAudio");
+const newAudioBuffer = require("./newAudioBuffer");
 
 const source = audioCtx.createBufferSource();
 
-newAudio("file:///home/nemanjan00/Music/Elvis Presley/Jailhouse Rock/01 Jailhouse Rock.mp3").then((buffer) => {
-	console.log(buffer);
-
+newAudioBuffer("file:///home/nemanjan00/Music/Elvis Presley/Jailhouse Rock/01 Jailhouse Rock.mp3").then((buffer) => {
 	source.buffer = buffer;
 
 	const gainNode = audioCtx.createGain();
