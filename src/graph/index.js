@@ -10,18 +10,20 @@ window.setup = function() {
 
 window.a = 1;
 
+window.gain = 1;
+
 window.addEventListener("keydown", function(){
 	window.a = (1 - window.a);
 });
 
-let max = [-1, -1, -1];
-let oldValue = [255, 255, 255];
+let max = [-1, -1, -1, -1];
+let oldValue = [255, 255, 255, 255];
 
 function getColor(a){
 	if(window.spectrum == undefined){
 		return 0;
 	} else {
-		let sep = Math.floor(window.spectrum.length / 3.3);
+		let sep = Math.floor(window.spectrum.length / 3.1);
 
 		let value = window.spectrum[sep * a] * 10000;
 
@@ -47,6 +49,7 @@ window.draw = function() {
 	background(getColor(0), getColor(1), getColor(2));
 
 	window.k = ((mouseX / windowWidth) * 10) - 5;
+	window.gain = mouseY / windowHeight;
 
 	ellipse(mouseX, mouseY, 80, 80);
 }

@@ -8,7 +8,7 @@ const source = audioCtx.createBufferSource();
 
 let cnt = 0;
 
-newAudioBuffer("file:///home/nemanjan00/Music/Ed Sheeran/Shape of You/01 Shape of You (album version).mp3").then((buffer) => {
+newAudioBuffer("file:///home/nemanjan00/Music/Caravan Palace/00 Black Betty.mp3").then((buffer) => {
 	window.buffer = buffer;
 
 	source.buffer = buffer;
@@ -25,27 +25,39 @@ newAudioBuffer("file:///home/nemanjan00/Music/Ed Sheeran/Shape of You/01 Shape o
 
 		let buffer = buffer1;
 
-		let position = 0;
+		let oldI = i;
 
-		let input = buffer.getChannelData(0);
-		let out = outputBuffer.getChannelData(0);
+		for(chan = 0; chan < 2; chan++){
+			i = oldI;
+			let position = 0;
 
-		do {
-			i += k * window.a;
+			let input = buffer.getChannelData(chan);
+			let out = outputBuffer.getChannelData(chan);
 
-			let j = Math.floor(i);
-			let diff = i - j;
+			do {
+				i += k * window.a;
 
-			out[position] = input[j] * diff + input[j + 1] * (1 - diff);
-			position++;
-		} while(position < out.length);
+				let j = Math.floor(i);
+				let diff = i - j;
 
+				out[position] = input[j] * diff + input[j + 1] * (1 - diff);
+				position++;
+			} while(position < out.length);
+		}
 
 		if(cnt++ % 8 == 0){
+			let out = outputBuffer.getChannelData(1);
 			window.spectrum = ft(out);
 		}
+
+		gainNode.gain.value = window.gain;
 	}
 
-	scriptNode.connect(audioCtx.destination);
+	const gainNode = audioCtx.createGain();
+
+	gainNode.gain.value = 1;
+
+	scriptNode.connect(gainNode);
+	gainNode.connect(audioCtx.destination);
 });
 
