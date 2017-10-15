@@ -22,5 +22,5 @@ I am not judgemental, do as you wish.
 
 ## Authors
 
- * [nemanjan00](https://github.com/nemanjan00)
+ * [nemanjan00](https://github.com/nemanjan00) - Most of the stuff and honestly speaking, the smartest one in the team. 
 
