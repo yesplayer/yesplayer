@@ -1,6 +1,6 @@
 const p5 = require("p5");
 
-function windowResized(){
+window.windowResized = function(){
 	resizeCanvas(windowWidth, windowHeight);
 }
 
