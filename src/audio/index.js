@@ -12,12 +12,26 @@ newAudioBuffer("file:///home/nemanjan00/Music/Elvis Presley/Jailhouse Rock/01 Ja
 	const scriptNode = audioCtx.createScriptProcessor(4096, 0, 2);
 
 	let i = 0;
+	let buffer1 = buffer;
 
 	scriptNode.onaudioprocess = function(audioProcessingEvent) {
-		var outputBuffer = audioProcessingEvent.outputBuffer;
+		let outputBuffer = audioProcessingEvent.outputBuffer;
 
-		buffer.copyFromChannel(outputBuffer.getChannelData(0), 1, i * 4096);
-		buffer.copyFromChannel(outputBuffer.getChannelData(1), 1, i++ * 4096);
+		let buffer = buffer1;
+
+		i++;
+
+		for(channelNumber = 0; channelNumber < 2; channelNumber++){
+			let input = buffer.getChannelData(channelNumber);
+			let out = outputBuffer.getChannelData(channelNumber);
+
+			for(j = 0; j < out.length; j += 2){
+				out[j] = input[(i * 2048) + (j / 2)];
+				out[j + 1] = input[(i * 2048) + (j / 2)];
+			}
+
+			console.log(out);
+		}
 	}
 
 	scriptNode.connect(audioCtx.destination);
