@@ -1,36 +1,48 @@
+const ft = require('fourier-transform/asm');
+
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 const newAudioBuffer = require("./newAudioBuffer");
 
 const source = audioCtx.createBufferSource();
 
-newAudioBuffer("file:///home/nemanjan00/Music/Elvis Presley/Jailhouse Rock/01 Jailhouse Rock.mp3").then((buffer) => {
+let cnt = 0;
+
+newAudioBuffer("file:///home/nemanjan00/Music/Ed Sheeran/Shape of You/01 Shape of You (album version).mp3").then((buffer) => {
 	window.buffer = buffer;
 
 	source.buffer = buffer;
 
-	const scriptNode = audioCtx.createScriptProcessor(4096, 0, 2);
+	const scriptNode = audioCtx.createScriptProcessor(256, 0, 2);
 
 	let i = 0;
 	let buffer1 = buffer;
+
+	window.k = 1;
 
 	scriptNode.onaudioprocess = function(audioProcessingEvent) {
 		let outputBuffer = audioProcessingEvent.outputBuffer;
 
 		let buffer = buffer1;
 
-		i++;
+		let position = 0;
 
-		for(channelNumber = 0; channelNumber < 2; channelNumber++){
-			let input = buffer.getChannelData(channelNumber);
-			let out = outputBuffer.getChannelData(channelNumber);
+		let input = buffer.getChannelData(0);
+		let out = outputBuffer.getChannelData(0);
 
-			for(j = 0; j < out.length; j += 2){
-				out[j] = input[(i * 2048) + (j / 2)];
-				out[j + 1] = input[(i * 2048) + (j / 2)];
-			}
+		do {
+			i += k * window.a;
 
-			console.log(out);
+			let j = Math.floor(i);
+			let diff = i - j;
+
+			out[position] = input[j] * diff + input[j + 1] * (1 - diff);
+			position++;
+		} while(position < out.length);
+
+
+		if(cnt++ % 8 == 0){
+			window.spectrum = ft(out);
 		}
 	}
 

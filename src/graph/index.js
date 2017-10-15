@@ -8,14 +8,45 @@ window.setup = function() {
 	windowResized();
 }
 
-window.draw = function() {
-	background("#000");
+window.a = 1;
 
-	if (mouseIsPressed) {
-		fill(0);
+window.addEventListener("keydown", function(){
+	window.a = (1 - window.a);
+});
+
+let max = [-1, -1, -1];
+let oldValue = [255, 255, 255];
+
+function getColor(a){
+	if(window.spectrum == undefined){
+		return 0;
 	} else {
-		fill(255);
+		let sep = Math.floor(window.spectrum.length / 3.3);
+
+		let value = window.spectrum[sep * a] * 10000;
+
+		if(value > max[a]){
+			max[a] = value;
+		}
+
+		if(isNaN(oldValue[a])){
+			oldValue[a] = 255;
+		}
+
+		max[a] = 0.99 * max[a] + 0.01 * value;
+
+		value = ((value / max[a]) * 255) * 0.2 + 0.7 * oldValue[a];
+
+		oldValue[a] = value;
+
+		return value / (3.01 - a);
 	}
+}
+
+window.draw = function() {
+	background(getColor(0), getColor(1), getColor(2));
+
+	window.k = ((mouseX / windowWidth) * 10) - 5;
 
 	ellipse(mouseX, mouseY, 80, 80);
 }
