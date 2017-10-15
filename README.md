@@ -20,3 +20,7 @@ I wanted to create player that actually does what I want so I am creating new on
 
 I am not judgemental, do as you wish. 
 
+## Authors
+
+ * [nemanjan00](https://github.com/nemanjan00)
+
