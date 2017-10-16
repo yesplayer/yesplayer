@@ -71,8 +71,8 @@ window.draw = function() {
 
 
 	audio.tracks.forEach(function(track){
-		//track.speed = mouseX/windowWidth * 10 - 5;
-		track.speed = 1;
+		track.speed = mouseX/windowWidth * 10 - 5;
+		//track.speed = 1;
 	})
 
 	audio.gainNode.gain.value = mouseY / windowHeight;
