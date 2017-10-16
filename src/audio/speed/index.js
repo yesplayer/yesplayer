@@ -44,7 +44,7 @@ module.exports = function(audioCtx, buffer, outputNode){
 			}
 		},
 		init: function(audioCtx, buffer, outputNode){
-			const scriptNode = audioCtx.createScriptProcessor(256, 0, 2);
+			const scriptNode = audioCtx.createScriptProcessor(512, 0, 2);
 
 			speed.buffer = buffer;
 

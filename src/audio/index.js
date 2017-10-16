@@ -1,6 +1,8 @@
 const newAudioBuffer = require("./newAudioBuffer");
 const speed = require("./speed");
 
+let cnt = 0;
+
 let audio = {
 	inited: false,
 	
@@ -30,14 +32,14 @@ let audio = {
 
 				audio.gainNode.connect(analyser);
 
-				analyser.fftSize = 256;
+				analyser.fftSize = 128;
 
 				var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
 				window.spectrum = dataArray;
 
 				setInterval(function(){
 					analyser.getByteFrequencyData(dataArray);
-				});
+				}, 0);
 			}).catch(function(error) {
 				reject(error);
 			});

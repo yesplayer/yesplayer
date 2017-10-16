@@ -46,13 +46,36 @@ function getColor(a){
 	}
 }
 
+let maxA = 0;
+
 window.draw = function() {
 	background(getColor(0), getColor(1), getColor(2));
 
+	if(window.spectrum != undefined){
+		let width = windowWidth/window.spectrum.length;
+
+		let last = windowHeight - ((window.spectrum[0] / maxA) * windowHeight);
+
+		for(i = 1; i < window.spectrum.length; i++){
+			if(window.spectrum[i] > maxA){
+				maxA = window.spectrum[i];
+			}
+
+			let current = windowHeight - ((window.spectrum[i] / maxA) * windowHeight);
+
+			line((i - 1) * width, last, i * width, current);
+
+			last = current;
+		}
+	}
+
+
 	audio.tracks.forEach(function(track){
-		track.speed = mouseX/windowWidth * 10 - 5;
+		//track.speed = mouseX/windowWidth * 10 - 5;
+		track.speed = 1;
 	})
-	window.gain = mouseY / windowHeight;
+
+	audio.gainNode.gain.value = mouseY / windowHeight;
 
 	ellipse(mouseX, mouseY, 80, 80);
 }

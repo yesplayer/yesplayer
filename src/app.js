@@ -1,6 +1,6 @@
 const audio = require("./audio")();
 
-audio.addTrack("https://party.nemanja.top/download/wyx6JDQCslE");
+audio.addTrack("https://party.nemanja.top/download/TYXHv97kbps");
 
 const graph = require("./graph");
 
