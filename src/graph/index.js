@@ -1,4 +1,5 @@
 const p5 = require("p5");
+const audio = require("../audio")();
 
 window.windowResized = function(){
 	resizeCanvas(windowWidth, windowHeight);
@@ -48,7 +49,9 @@ function getColor(a){
 window.draw = function() {
 	background(getColor(0), getColor(1), getColor(2));
 
-	window.k = ((mouseX / windowWidth) * 10) - 5;
+	audio.tracks.forEach(function(track){
+		track.speed = mouseX/windowWidth * 10 - 5;
+	})
 	window.gain = mouseY / windowHeight;
 
 	ellipse(mouseX, mouseY, 80, 80);

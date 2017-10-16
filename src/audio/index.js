@@ -1,24 +1,42 @@
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
 const newAudioBuffer = require("./newAudioBuffer");
 const speed = require("./speed");
 
-newAudioBuffer("file:///home/nemanjan00/Music/Luis Fonsi feat. Daddy Yankee/Despacito/01 Despacito.mp3").then((buffer) => {
-	const gainNode = audioCtx.createGain();
+let audio = {
+	inited: false,
+	
+	gainNode: undefined,
+	audioCtx: undefined,
 
-	gainNode.gain.value = 1;
+	tracks: [],
 
-	const speedInstance = speed(audioCtx, buffer, gainNode);
-	speedInstance.speed = 1.1;
+	init: function(){
+		audio.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+		audio.gainNode = audio.audioCtx.createGain();
 
-	let i = 0;
+		audio.gainNode.connect(audio.audioCtx.destination);
 
-	setInterval(function(){
-		i += 0.1;
+		audio.gainNode.gain.value = 1;
+	},
+	addTrack: function(url){
+		return new Promise(function(resolve, reject){
+			newAudioBuffer(url).then((buffer) => {
+				const speedInstance = speed(audio.audioCtx, buffer, audio.gainNode);
 
-		speedInstance.speed = Math.abs(Math.sin(i)) * 2;
-	}, 100);
+				audio.tracks.push(speedInstance);
 
-	gainNode.connect(audioCtx.destination);
-});
+				resolve(speedInstance);
+			}).catch(function(error) {
+				reject(error);
+			});
+		})
+	}
+}
+
+module.exports = function(){
+	if(!audio.inited){
+		audio.init();
+	}
+
+	return audio;
+}
 
