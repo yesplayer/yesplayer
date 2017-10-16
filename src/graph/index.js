@@ -76,7 +76,5 @@ window.draw = function() {
 	})
 
 	audio.gainNode.gain.value = mouseY / windowHeight;
-
-	ellipse(mouseX, mouseY, 80, 80);
 }
 
