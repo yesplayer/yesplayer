@@ -24,7 +24,20 @@ let audio = {
 
 				audio.tracks.push(speedInstance);
 
-				resolve(speedInstance);
+				//resolve(speedInstance);
+
+				const analyser = audio.audioCtx.createAnalyser();
+
+				audio.gainNode.connect(analyser);
+
+				analyser.fftSize = 256;
+
+				var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
+				window.spectrum = dataArray;
+
+				setInterval(function(){
+					analyser.getByteFrequencyData(dataArray);
+				});
 			}).catch(function(error) {
 				reject(error);
 			});
