@@ -1,8 +1,6 @@
 // Variables
 
-$background: #282a36;
-$border: #44475a;
-$color: #f8f8f2;
+@import "src/scss/variables.scss";
 
 // Bootstrap customization
 
@@ -11,9 +9,10 @@ $card-bg: $background;
 
 $body-color: $color;
 
-$grid-gutter-width: 1px;
+$grid-gutter-width: 2px;
 
 $card-border-color: $border;
+$table-border-color: $border;
 
 $border-radius: 0px;
 $border-width: 1px;
@@ -21,4 +20,29 @@ $border-width: 1px;
 // Bootstrap
 
 @import "node_modules/bootstrap/scss/bootstrap";
+
+.row {
+	margin: 1px;
+}
+
+.table {
+	margin-bottom: 0px;
+}
+
+.container-fluid {
+	height: 100%;
+}
+
+.flex {
+	flex-flow: column;
+	height: 100vh;
+}
+
+.decks {
+	flex: 0 1 auto;
+}
+
+.song-picker {
+	flex: 1 1 auto;
+}
 
