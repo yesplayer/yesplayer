@@ -1,0 +1,24 @@
+// Variables
+
+$background: #282a36;
+$border: #44475a;
+$color: #f8f8f2;
+
+// Bootstrap customization
+
+$body-bg: $background;
+$card-bg: $background;
+
+$body-color: $color;
+
+$grid-gutter-width: 1px;
+
+$card-border-color: $border;
+
+$border-radius: 0px;
+$border-width: 1px;
+
+// Bootstrap
+
+@import "node_modules/bootstrap/scss/bootstrap";
+

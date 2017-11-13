@@ -1,3 +1,9 @@
+// Bootstrap CSS
+
+require("./scss/custom.scss");
+
+// Application
+
 const audio = require("./audio")();
 const graph = require("./graph");
 
