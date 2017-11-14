@@ -18,6 +18,8 @@ let audio = {
 		audio.gainNode.connect(audio.audioCtx.destination);
 
 		audio.gainNode.gain.value = 1;
+
+		audio.inited = true;
 	},
 	addTrack: function(url){
 		return new Promise(function(resolve, reject){
@@ -51,6 +53,8 @@ module.exports = function(){
 	if(!audio.inited){
 		audio.init();
 	}
+
+	window.audio = audio;
 
 	return audio;
 }
