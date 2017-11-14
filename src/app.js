@@ -8,5 +8,5 @@ require("font-awesome/css/font-awesome.min.css");
 const audio = require("./audio")();
 const graph = require("./graph");
 
-audio.addTrack("https://party.nemanja.top/download/TYXHv97kbps");
+audio.addTrack("https://party.nemanja.top/download/D_JxMb8RLEY");
 
