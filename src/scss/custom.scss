@@ -2,24 +2,13 @@
 
 @import "src/scss/variables.scss";
 
-// Bootstrap customization
-
-$body-bg: $background;
-$card-bg: $background;
-
-$body-color: $color;
-
-$grid-gutter-width: 2px;
-
-$card-border-color: $border;
-$table-border-color: $border;
-
-$border-radius: 0px;
-$border-width: 1px;
-
 // Bootstrap
 
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "./bootstrap";
+
+// Photon
+
+@import "./photon.scss";
 
 .row {
 	margin: 1px;

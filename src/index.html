@@ -9,8 +9,8 @@
 		<title>YesPlayer</title>
 	</head>
 	<body>
-		<div class="container-fluid flex">
-			<div class="row decks">
+		<div class="window">
+			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
 						<div class="row">
@@ -40,57 +40,58 @@
 					</div>
 				</div>
 			</div>
-			<div class="row song-picker">
-				<div class="col-md-2">
-					<div class="card">
-						<ul class="nav flex-column">
-							<li class="nav-item">
-								<a class="nav-link active" href="#">Active</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Link</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Link</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link disabled" href="#">Disabled</a>
-							</li>
-						</ul>
+			<div class="window-content">
+				<div class="pane-group">
+					<div class="pane-sm sidebar">
+						<nav class="nav-group">
+							<h5 class="nav-group-title">Library</h5>
+							<a class="nav-group-item active">
+								<span class="fa fa-spotify fa-fw"></span>
+								Spotify
+							</a>
+							<span class="nav-group-item">
+								<span class="fa fa-youtube-play fa-fw"></span>
+								Youtube
+							</span>
+							<span class="nav-group-item">
+								<span class="fa fa-folder fa-fw"></span>
+								Local
+							</span>
+						</nav>
 					</div>
-				</div>
-				<div class="col-md-10">
-					<div class="card">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">First Name</th>
-									<th scope="col">Last Name</th>
-									<th scope="col">Username</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>@mdo</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>@fat</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="pane">
+						<div class="card">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">First Name</th>
+										<th scope="col">Last Name</th>
+										<th scope="col">Username</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">1</th>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+									</tr>
+									<tr>
+										<th scope="row">2</th>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+									</tr>
+									<tr>
+										<th scope="row">3</th>
+										<td>Larry</td>
+										<td>the Bird</td>
+										<td>@twitter</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

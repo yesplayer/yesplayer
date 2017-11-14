@@ -1,0 +1,56 @@
+$border-color: $border;
+$default-color: $color;
+
+// Variables
+@import "node_modules/photonkit/sass/variables.scss";
+
+// Mixins
+@import "node_modules/photonkit/sass/mixins.scss";
+
+// Normalize, Appify, Base, & Utilities CSS
+@import "node_modules/photonkit/sass/normalize.scss";
+@import "node_modules/photonkit/sass/appify.scss";
+@import "node_modules/photonkit/sass/base.scss";
+@import "node_modules/photonkit/sass/utilities.scss";
+
+// Components
+@import "node_modules/photonkit/sass/bars.scss";
+@import "node_modules/photonkit/sass/forms.scss";
+@import "node_modules/photonkit/sass/grid.scss";
+@import "node_modules/photonkit/sass/images.scss";
+@import "node_modules/photonkit/sass/lists.scss";
+@import "node_modules/photonkit/sass/navs.scss";
+@import "node_modules/photonkit/sass/tables.scss";
+@import "node_modules/photonkit/sass/tabs.scss";
+
+.pane-sm {
+	max-width: 700px !important;
+	min-width: 300px;
+}
+
+.window {
+	color: $color;
+	background: $background;
+}
+
+.sidebar {
+	color: $color !important;
+	background: $background !important;
+}
+
+.nav-group-title {
+	color: $color;
+}
+
+.nav-group-item {
+	color: $color;
+}
+
+.nav-group-item.active {
+	background: $border;
+}
+
+thead, tbody {
+	background: none;
+}
+

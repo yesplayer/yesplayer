@@ -1,6 +1,7 @@
-// Bootstrap CSS
+// CSS & Fonts
 
 require("./scss/custom.scss");
+require("font-awesome/css/font-awesome.min.css");
 
 // Application
 

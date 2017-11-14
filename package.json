@@ -19,6 +19,9 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.7",
-    "electron": "^1.7.9"
+    "electron": "^1.7.9",
+    "file-loader": "^1.1.5",
+    "font-awesome": "^4.7.0",
+    "photonkit": "^0.1.2"
   }
 }
